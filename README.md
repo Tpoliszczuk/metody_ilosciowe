@@ -1,13 +1,13 @@
 Część 1 zaliczenia [30 punktów] – 3. zjazd (SZ)
 Polecenie identyczne dla każdej grupy:
-1.	Wybierz 3 instrumenty, dla których przeprowadzasz analizę (np. akcji, korzystając ze strony stooq.pl)  - LockheadMartin, RTX i BaeSystems - trzeba jeszcze potwierdzić u prowadzącej
-2.	Napisz kod, który wczytuje dane dot. ceny wybranych instrumentów. Oceń kompletność zbioru danych. -Tutaj trzeba jeszcze ocenić czy nie brakuje czegoś. Daty są wyrównane (też do sprawdzenia)
-3.	Wyznacz szeregi dziennych logarytmicznych stóp zwrotu. - Chyba DONE? Nie wiem czy powinno być w postaci listy czy szeregu czasowego
+1.	Wybierz 3 instrumenty, dla których przeprowadzasz analizę (np. akcji, korzystając ze strony stooq.pl)  - LockheadMartin, RTX i BaeSystems - Done
+2.	Napisz kod, który wczytuje dane dot. ceny wybranych instrumentów. Oceń kompletność zbioru danych. -Done
+3.	Wyznacz szeregi dziennych logarytmicznych stóp zwrotu. -Done
 4.	Dla wyznaczonych stóp zwrotu podaj podstawowe statystyki opisowe (średnia, odchylenie standardowe, maksimum, minimum, mediana). -DONE
-5.	Przedstaw uzyskane szeregi czasowe w postaci wykresu/wykresów. - Trzeba je zrobić ładniej
-6.	Oceń korelację między stopami zwrotu różnych instrumentów. 
+5.	Przedstaw uzyskane szeregi czasowe w postaci wykresu/wykresów. - Done
+6.	Oceń korelację między stopami zwrotu różnych instrumentów. - Done
 7.	Wyznacz skośność i kurtozę dla stóp zwrotu z każdego z instrumentów. -DONE
-8.	Przedstaw histogramy i oceń zgodność z rozkładem normalnym. 
+8.	Przedstaw histogramy i oceń zgodność z rozkładem normalnym.  - Done
 
 7.04 – termin przesłania pierwszej pracy domowej
 
