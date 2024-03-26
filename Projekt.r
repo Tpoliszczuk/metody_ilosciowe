@@ -24,6 +24,24 @@ lmt$Data<-as.Date(lmt$Data,format="%Y-%m-%d")
 rtx$Data<-as.Date(rtx$Data,format="%Y-%m-%d")
 
 
+# Znalezienie najstarszej wspólnej daty
+start_date <- max(min(bae$Data), min(lmt$Data), min(rtx$Data))
+
+# Filtrowanie danych do najstarszej wspólnej daty
+bae <- subset(bae, Data >= start_date)
+lmt <- subset(lmt, Data >= start_date)
+rtx <- subset(rtx, Data >= start_date)
+
+# Sprawdzenie brakujących wartości dla każdego zestawu danych
+any_na_bae <- anyNA(bae)
+any_na_lmt <- anyNA(lmt)
+any_na_rtx <- anyNA(rtx)
+
+# Wyświetlenie wyników
+cat("Czy są brakujące wartości w danych dla BAE Systems:", any_na_bae, "\n")
+cat("Czy są brakujące wartości w danych dla LockHeadMartin:", any_na_lmt, "\n")
+cat("Czy są brakujące wartości w danych dla RTX:", any_na_rtx, "\n")
+
 
 #wybranie kolumn Data i zamkniecie
 bae <- bae[,c(1,5)] 
@@ -98,3 +116,43 @@ bae_mu  = bae_M1; bae_mu               #średnia
 bae_sig = sqrt(bae_M2); bae_sig         #odchylenie std. (miara zmienności), pierwiastek z wariancji
 bae_S0   = bae_M3/(bae_sig^3); bae_S0      #skośność - trzeci moment centralny dzielimy podzielony przez odchylenie do 3
 bae_K0   = bae_M4/(bae_sig^4); bae_K0      #kurtoza, rozkład normalny ma kurtozę =3, wieksza kurtoza onzacza wyzsze prawdopodobienstow odchylen
+
+
+#Histogramy
+
+#Wygładzony histogram (wykres gęstości) + porównanie z rozkładem normalnym
+#BAE Systems
+r1 <- bae_return_zoo
+ggplot(data.frame(r1), aes(x = r1)) +
+  theme_bw() +
+  geom_density(aes(fill = "Bae System"), colour = "green", size = 0.01) +
+  stat_function(fun = function(x) dnorm(x, mean = bae_mu, sd = bae_sig), color = "blue", size = 1) +
+  labs(fill = "Legend", color = "Legend") +
+  xlim(-15, 15)+
+  xlab("Rozkład danych Bae System oraz rozkład normalny")+
+  scale_fill_manual(values = c("Bae System" = "green"))
+
+#LockheadMartin
+r2 <- lmt_return_zoo
+ggplot(data.frame(r2), aes(x = r2)) +
+  theme_bw() +
+  geom_density(aes(fill = "Lockhead Martin"), colour = "red", size = 0.01) +
+  stat_function(fun = function(x) dnorm(x, mean = lmt_mu, sd = lmt_sig), color = "blue", size = 1) +
+  labs(fill = "Legend", color = "Legend") +
+  xlim(-15, 15)+
+  xlab("Rozkład danych Lochead Martin oraz rozkład normalny")+
+  scale_fill_manual(values = c("Lockhead Martin" = "red"))
+
+#RTX
+r3 <- lmt_return_zoo
+ggplot(data.frame(r3), aes(x = r3)) +
+  theme_bw() +
+  geom_density(aes(fill = "RTX"), colour = "yellow", size = 0.01) +
+  stat_function(fun = function(x) dnorm(x, mean = rtx_mu, sd = rtx_sig), color = "blue", size = 1) +
+  labs(fill = "Legenda", color = "Legenda") +
+  xlim(-15, 15)+
+  xlab("Rozkład danych RTX oraz rozkład normalny")+
+  scale_fill_manual(values = c("RTX" = "yellow"))
+
+
+
